@@ -1,1 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap');
 
+:root {
+  --ocean: #49baff;
+  --sun: #ffde59;
+  --peach: #ffcaaa;
+  --sand: #f4e2d8;
+  --green: #1fc690;
+  --accent: #ff90b3;
+  --text: #155764;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  background: linear-gradient(135deg, var(--peach) 0%, var(--sand) 100%);
+  min-height: 100vh;
+  margin: 0;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.header {
+  text-align: center;
+  margin-top: 2em;
+}
+.banner-img {
+  max-width: 180px;
+  margin: 0 auto 10px auto;
+  display: block;
+}
+h1 {
+  color: var(--ocean);
+  margin-bottom: 0.1em;
+  font-weight: 700;
+}
+h2 {
+  color: var(--green);
+  font-weight: 500;
+  margin-top: 0;
+}
+.lead {
+  color: var(--text);
+  font-size: 1.17em;
+  margin-bottom: 2em;
+}
+
+/* --- FORM --- */
+form {
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.93);
+  margin: 25px auto 0 auto;
+  padding: 2em 2em 1.5em 2em;
+  border-radius: 22px;
+  box-shadow: 0 6px 24px #0001;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+label {
+  display: block;
+  color: var(--ocean);
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+input[type="text"], textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1.5px solid var(--ocean);
+  background: #e7faff;
+  font-size: 1em;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+
+.radio-row {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  margin-top: 8px;
+}
+.radio-row input[type="radio"] {
+  margin-top: 0;
+}
+.inline {
+  display: inline;
+  margin-right: 17px;
+  color: var(--text);
+  cursor: pointer;
+}
+
+button[type="submit"] {
+  background: linear-gradient(90deg, var(--ocean), var(--sun));
+  color: #fff;
+  border: none;
+  padding: 11px 32px;
+  border-radius: 7px;
+  font-size: 1.14em;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 9px #22a6f233;
+  transition: background 0.21s;
+}
+
+button[type="submit"]:hover, button[type="submit"]:focus {
+  background: linear-gradient(90deg, var(--accent), var(--sun));
+}
+
+textarea {
+  min-height: 40px;
+  resize: vertical;
+}
+
+.hidden {
+  display: none;
+}
+
+/* --- POPUP --- */
+.popup {
+  position: fixed;
+  top: 29vh;
+  left: 50vw;
+  transform: translate(-50%, -35%);
+  background: linear-gradient(120deg, var(--ocean), var(--green));
+  color: #fff;
+  padding: 26px 48px;
+  border-radius: 16px;
+  font-size: 1.3em;
+  z-index: 50;
+  display: none;
+  box-shadow: 0 4px 18px #0003;
+  text-align: center;
+}
+
+/* --- Footer --- */
+footer {
+  text-align: center;
+  margin-top: auto;
+  padding: 2em 0 1em 0;
+  font-size: 1.08em;
+  color: #408d99;
+}
+.footer-note {
+  font-style: italic;
+  color: var(--sun);
+}
