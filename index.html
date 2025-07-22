@@ -1,33 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Turkey Trip Signup – Haydarpasha Palace, 2026</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="header">
-    <img src="https://cdn.pixabay.com/photo/2017/01/31/13/14/sea-2028386_1280.png" alt="Summer Beach" class="banner-img" />
+    <img
+      src="https://cdn.pixabay.com/photo/2017/01/31/13/14/sea-2028386_1280.png"
+      alt="Summer Beach"
+      class="banner-img"
+    />
     <h1>🌞 Turkey Trip 2026 Signup</h1>
     <h2>Haydarpasha Palace</h2>
+    <p class="hotel-link">
+      🏨
+      <a
+        href="https://www.google.com/maps/place/Haydarpasha+Palace/@41.0096006,28.9535999,17z"
+        target="_blank"
+        rel="noopener noreferrer"
+        >View Haydarpasha Palace on Google Maps</a
+      >
+    </p>
     <p class="lead">Will you join us for sun, sights, and memories?</p>
   </div>
 
   <form id="signupForm" autocomplete="off">
     <div class="form-group">
       <label for="first_name">First name</label>
-      <input type="text" name="first_name" id="first_name" required>
+      <input type="text" name="first_name" id="first_name" required />
     </div>
     <div class="form-group">
       <label for="last_name">Last name</label>
-      <input type="text" name="last_name" id="last_name" required>
+      <input type="text" name="last_name" id="last_name" required />
     </div>
     <div class="form-group">
       <label>Are you coming?</label>
       <div class="radio-row">
-        <input type="radio" name="coming" id="comingYes" value="yes" required>
+        <input type="radio" name="coming" id="comingYes" value="yes" required />
         <label for="comingYes" class="inline">Yes 🍍</label>
-        <input type="radio" name="coming" id="comingNo" value="no" required>
+        <input type="radio" name="coming" id="comingNo" value="no" required />
         <label for="comingNo" class="inline">No 🍋</label>
       </div>
     </div>
@@ -35,7 +48,7 @@
       <label for="reason">Oh no! Please tell us why you can't come:</label>
       <textarea name="reason" id="reason" rows="2"></textarea>
     </div>
-    <input type="hidden" name="yay_field" id="yay_field" value="">
+    <input type="hidden" name="yay_field" id="yay_field" value="" />
     <button type="submit">Submit ✔️</button>
   </form>
 
@@ -46,7 +59,7 @@
       Made with ☀️ for the family | <span class="footer-note">Summer 2026</span>
     </p>
   </footer>
-  
+
   <script src="https://unpkg.com/@supabase/supabase-js"></script>
   <script src="script.js"></script>
 </body>
