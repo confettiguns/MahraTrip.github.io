@@ -3,62 +3,66 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Turkey Trip 2026 – Signup</title>
+  <title>Turkey Trip 2026</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Floating Orbs -->
-  <ul class="floating-orbs">
-    <li></li><li></li><li></li><li></li><li></li>
-    <li></li><li></li><li></li><li></li><li></li>
-  </ul>
-
   <header>
-    <h1>🌴 Turkey Trip 2026</h1>
+    <h1>🌞 Turkey Trip 2026</h1>
     <p class="subtitle">Haydarpasha Palace Signup</p>
-
-    <div class="info-tab">
-      <button id="infoToggle" aria-expanded="false">ℹ️ Info</button>
-      <div id="infoContent" class="info-content" hidden>
-        <p>
-          This is the Mahra getaway, from <strong>20th to 31st July 2026</strong> — a family celebration of Omar's 18th birthday 🎉.
-        </p>
-      </div>
-    </div>
   </header>
 
-  <main>
-    <form id="signupForm" autocomplete="off" novalidate>
-      <h2>Are you coming? ☀️</h2>
+  <main class="container">
+    <section class="form-card">
+      <form id="signupForm" autocomplete="off" novalidate>
+        <h2>Are you coming? &nbsp;✈️</h2>
 
-      <label for="first_name">First Name</label>
-      <input type="text" id="first_name" name="first_name" required placeholder="e.g. Mahra" />
+        <label for="first_name">First name</label>
+        <input type="text" id="first_name" name="first_name" placeholder="Your first name" required />
 
-      <label for="last_name">Last Name</label>
-      <input type="text" id="last_name" name="last_name" required placeholder="e.g. TripFam" />
+        <label for="last_name">Last name</label>
+        <input type="text" id="last_name" name="last_name" placeholder="Your last name" required />
 
-      <fieldset class="radios">
-        <legend>Are you in?</legend>
-        <label><input type="radio" name="coming" value="yes" required /> Yes!</label>
-        <label><input type="radio" name="coming" value="no" required /> No 😭</label>
-      </fieldset>
+        <fieldset class="radio-group" id="comingGroup">
+          <legend>Are you in?</legend>
+          <label><input type="radio" name="coming" value="yes" required /> Yes! 🏖️</label>
+          <label><input type="radio" name="coming" value="no" /> No 😞</label>
+        </fieldset>
 
-      <div id="reasonDiv" class="hidden">
-        <label for="reason">Why not?</label>
-        <textarea id="reason" name="reason" rows="3" placeholder="Let us know..."></textarea>
-      </div>
+        <div id="reasonDiv" class="hidden">
+          <label for="reason">Why not?</label>
+          <textarea id="reason" name="reason" rows="3" placeholder="Tell us why..."></textarea>
+        </div>
 
-      <input type="hidden" name="yay_field" id="yay_field" value="" />
+        <input type="hidden" name="yay_field" id="yay_field" value="" />
 
-      <button type="submit" id="submitBtn">
-        <span class="btn-text">Submit</span>
-        <svg class="spinner hidden" viewBox="0 0 50 50">
-          <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5" />
-        </svg>
-      </button>
+        <button type="submit" id="submitBtn">
+          <span class="btn-text">Submit</span>
+          <svg class="spinner hidden" viewBox="0 0 50 50" aria-hidden="true">
+            <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5" />
+          </svg>
+        </button>
 
-      <p class="confirmation hidden" id="popupMessage">🎉 Got it! Thank you! 🎉</p>
-    </form>
+        <p class="confirmation hidden" id="popupMessage" role="alert" aria-live="assertive">🎉 Got it! Thank you! 🎉</p>
+      </form>
+    </section>
+
+    <section class="map-card">
+      <h2>Where We're Staying 🏨</h2>
+      <a href="https://www.haydarpashapalace.com/en" target="_blank" rel="noopener" class="hotel-link">
+        🌐 Hotel Website
+      </a>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.4604341732244!2d31.807550815115633!3d36.59824879518566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14dca562843a396f%3A0xaed5c3d64feffe4e!2sHaydarpasha%20Palace!5e0!3m2!1sen!2str!4v1690045389407!5m2!1sen!2str"
+        width="100%"
+        height="280"
+        style="border:0; border-radius: 12px;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        aria-label="Google Maps location of Haydarpasha Palace"
+      ></iframe>
+    </section>
   </main>
 
   <footer>
