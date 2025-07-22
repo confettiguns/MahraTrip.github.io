@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="="en">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Turkey Trip Signup</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -10,6 +10,20 @@
   <header>
     <h1>🌴 Turkey Trip 2026</h1>
     <p class="subtitle">Haydarpasha Palace Signup</p>
+
+    <div class="info-tab">
+      <button id="infoToggle" aria-expanded="false" aria-controls="infoContent" aria-label="Toggle Information">
+        ℹ️ Info
+      </button>
+      <div id="infoContent" class="info-content" hidden>
+        <p>
+          This is the Mahra getaway, from the <strong>20th to the 31st of July 2026</strong>! We are doing this as a family gathering, it has many amenities suited for the entire Mahra family. Moreover, this is a celebration of my (Omar)'s coming of age: <strong>18 years old!</strong>
+        </p>
+        <p class="current-date">
+          Current date: <time datetime="2025-07-22T20:23:00+02:00">Tuesday, July 22, 2025, 8:23 PM CEST</time>
+        </p>
+      </div>
+    </div>
   </header>
 
   <main class="container">
@@ -55,7 +69,7 @@
           </svg>
         </button>
 
-        <p class="confirmation hidden" id="popupMessage">🎉 Got it! Thank you! 🎉</p>
+        <p class="confirmation hidden" id="popupMessage" role="alert" aria-live="assertive">🎉 Got it! Thank you! 🎉</p>
       </form>
     </section>
 
