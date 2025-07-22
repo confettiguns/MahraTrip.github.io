@@ -1,69 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Turkey Trip – Signup</title>
+  <title>Turkey Trip Signup</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
-    <h1>🌞 Turkey Trip 2026</h1>
+    <h1>🌴 Turkey Trip 2026</h1>
     <p class="subtitle">Haydarpasha Palace Signup</p>
   </header>
 
   <main class="container">
     <section class="form-area">
       <form id="signupForm" novalidate>
-        <h2>Are you coming? ✈️</h2>
+        <h2>Are you coming? 🌞</h2>
 
-        <label>First Name
-          <input type="text" name="first_name" required placeholder="Your first name" />
+        <label>
+          First Name
+          <input type="text" name="first_name" required placeholder="e.g. Mahra" />
         </label>
 
-        <label>Last Name
-          <input type="text" name="last_name" required placeholder="Your last name" />
+        <label>
+          Last Name
+          <input type="text" name="last_name" required placeholder="e.g. TripFam" />
         </label>
 
         <div class="radios">
           <p>Are you in?</p>
           <label>
             <input type="radio" name="coming" value="yes" required />
-            Yes! 💃
+            Yes! 🕶️
           </label>
           <label>
             <input type="radio" name="coming" value="no" required />
-            No 😔
+            No 🙁
           </label>
         </div>
 
         <div id="reasonDiv" class="hidden">
-          <label>Why not?
-            <textarea name="reason" placeholder="Type your reason here..."></textarea>
+          <label>
+            Why not?
+            <textarea name="reason" placeholder="Let us know..."></textarea>
           </label>
         </div>
 
-        <input type="hidden" name="yay_field" id="yay_field" value="" />
+        <input type="hidden" name="yay_field" id="yay_field" />
 
-        <button type="submit">Submit</button>
-        <p class="confirmation" id="popupMessage">🎉 Got it! Thank you! 🎉</p>
+        <button type="submit" id="submitBtn">
+          <span class="btn-text">Submit</span>
+          <svg class="spinner hidden" viewBox="0 0 50 50" aria-hidden="true">
+            <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"/>
+          </svg>
+        </button>
+
+        <p class="confirmation hidden" id="popupMessage">🎉 Got it! Thank you! 🎉</p>
       </form>
     </section>
 
     <section class="info-area">
       <div class="card">
-        <h2>Where We're Staying 🏨</h2>
+        <h2>Haydarpasha Palace</h2>
         <a
           href="https://www.haydarpashapalace.com/en"
           target="_blank"
           rel="noopener noreferrer"
           class="hotel-link"
-        >🌐 Hotel Website</a>
+        >🌐 Visit Website</a>
 
         <div class="map-wrapper">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.4604341732244!2d31.807550815115633!3d36.59824879518566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14dca562843a396f%3A0xaed5c3d64feffe4e!2sHaydarpasha%20Palace!5e0!3m2!1sen!2str!4v1690045389407!5m2!1sen!2str"
-            allowfullscreen
+            width="100%"
+            height="300"
+            style="border:0; border-radius: 12px;"
+            allowfullscreen=""
             loading="lazy"
           ></iframe>
         </div>
@@ -74,9 +86,8 @@
   <footer>
     <p>☀️ Summer 2026 Family Adventure</p>
   </footer>
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="script.js"></script>
-</body>
-
 </body>
 </html>
