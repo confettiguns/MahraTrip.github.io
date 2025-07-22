@@ -12,21 +12,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnText = submitBtn.querySelector('.btn-text');
   const spinner = submitBtn.querySelector('.spinner');
 
-  // Info tab toggle
   const infoToggle = document.getElementById('infoToggle');
   const infoContent = document.getElementById('infoContent');
 
+  // Info tab toggle
   infoToggle.addEventListener('click', () => {
     const expanded = infoToggle.getAttribute('aria-expanded') === 'true';
-    infoToggle.setAttribute('aria-expanded', !expanded);
-    if (expanded) {
-      infoContent.hidden = true;
-    } else {
-      infoContent.hidden = false;
-    }
+    infoToggle.setAttribute('aria-expanded', String(!expanded));
+    infoContent.hidden = expanded;
   });
 
-  // Show/hide reason textarea
+  // Show/hide reason textarea if "No" selected
   for (const radio of form.elements['coming']) {
     radio.addEventListener('change', () => {
       if (radio.checked && radio.value === 'no') {
@@ -42,8 +38,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  form.addEventListener('submit', async (e) => {
+  // Client side validation
+  function validateForm() {
+    if (!form.first_name.value.trim()) {
+      alert('Please enter your first name');
+      return false;
+    }
+    if (!form.last_name.value.trim()) {
+      alert('Please enter your last name');
+      return false;
+    }
+    if (![...form.elements['coming']].some(r => r.checked)) {
+      alert('Please select whether you are coming');
+      return false;
+    }
+    if (form.coming.value === 'no' && !form.reason.value.trim()) {
+      alert('Please enter a reason for not coming');
+      return false;
+    }
+    return true;
+  }
+
+  form.addEventListener('submit', async e => {
     e.preventDefault();
+    if (!validateForm()) return;
 
     submitBtn.disabled = true;
     btnText.textContent = 'Hold on...';
