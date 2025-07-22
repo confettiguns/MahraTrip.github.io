@@ -1,6 +1,7 @@
-// CONFIG: Add your Supabase credentials here
-const SUPABASE_URL = 'https://ihfccijybwwfyauvdnji.supabase.co'; 
+// CONFIG: Add your Supabase credentials here before deploy
+const SUPABASE_URL = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImloZmNjaWp5Ynd3ZnlhdXZkbmppIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMyMDQ2NDksImV4cCI6MjA2ODc4MDY0OX0.Ap0YWh5hwoc12jKclcRs4pmGfGit1thi6so484SyGFI';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImloZmNjaWp5Ynd3ZnlhdXZkbmppIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1MzIwNDY0OSwiZXhwIjoyMDY4NzgwNjQ5fQ.a8d1MoI5uVbwS7HchvFs9HIrTnbwB4McMsS0Yg4dMG8';
+
 const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 const form = document.getElementById('signupForm');
@@ -10,6 +11,7 @@ const popup = document.getElementById('popupMessage');
 
 const comingRadios = form.elements['coming'];
 
+// Show/hide reason textarea based on "coming" radio selection
 for (const input of comingRadios) {
   input.addEventListener('change', () => {
     if (input.value === 'no' && input.checked) {
@@ -25,10 +27,10 @@ for (const input of comingRadios) {
   });
 }
 
-// Prevent double submission
+// Prevent double submit and handle data submission
 let submitted = false;
 
-form.addEventListener('submit', async function (e) {
+form.addEventListener('submit', async (e) => {
   e.preventDefault();
   if (submitted) return;
   submitted = true;
@@ -38,7 +40,6 @@ form.addEventListener('submit', async function (e) {
   const coming = form.coming.value === 'yes';
   const reason = coming ? 'Yay.' : form.reason.value.trim();
 
-  // Insert into Supabase
   const { error } = await supabase.from('signups').insert([
     {
       first_name,
@@ -49,7 +50,7 @@ form.addEventListener('submit', async function (e) {
   ]);
 
   if (error) {
-    alert('Something went wrong: ' + error.message);
+    alert('Submission error: ' + error.message);
     submitted = false;
     return;
   }
@@ -60,5 +61,5 @@ form.addEventListener('submit', async function (e) {
     form.reset();
     reasonDiv.classList.add('hidden');
     submitted = false;
-  }, 2200);
+  }, 2000);
 });
