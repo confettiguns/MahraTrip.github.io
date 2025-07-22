@@ -4,60 +4,76 @@
   <meta charset="UTF-8" />
   <title>Turkey Trip Signup – Haydarpasha Palace, 2026</title>
   <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 <body>
-  <div class="header">
-    <img
-      src="https://cdn.pixabay.com/photo/2017/01/31/13/14/sea-2028386_1280.png"
-      alt="Summer Beach"
-      class="banner-img"
-    />
-    <h1>🌞 Turkey Trip 2026 Signup</h1>
-    <h2>Haydarpasha Palace</h2>
-    <p class="hotel-link">
-      🏨
+  <header class="header">
+    <h1>Turkey Trip 2026 Signup</h1>
+    <h2>
       <a
-        href="https://www.google.com/maps/place/Haydarpasha+Palace/@41.0096006,28.9535999,17z"
+        href="https://www.haydarpashapalace.com/en"
         target="_blank"
         rel="noopener noreferrer"
-        >View Haydarpasha Palace on Google Maps</a
+        class="hotel-link"
+        >Haydarpasha Palace</a
       >
-    </p>
-    <p class="lead">Will you join us for sun, sights, and memories?</p>
-  </div>
+    </h2>
+    <p class="lead">Join us for a memorable summer getaway.</p>
+  </header>
 
-  <form id="signupForm" autocomplete="off">
-    <div class="form-group">
-      <label for="first_name">First name</label>
-      <input type="text" name="first_name" id="first_name" required />
-    </div>
-    <div class="form-group">
-      <label for="last_name">Last name</label>
-      <input type="text" name="last_name" id="last_name" required />
-    </div>
-    <div class="form-group">
-      <label>Are you coming?</label>
-      <div class="radio-row">
-        <input type="radio" name="coming" id="comingYes" value="yes" required />
-        <label for="comingYes" class="inline">Yes 🍍</label>
-        <input type="radio" name="coming" id="comingNo" value="no" required />
-        <label for="comingNo" class="inline">No 🍋</label>
+  <main>
+    <form id="signupForm" autocomplete="off">
+      <div class="form-group">
+        <label for="first_name">First name</label>
+        <input type="text" id="first_name" name="first_name" required />
       </div>
-    </div>
-    <div class="form-group hidden" id="reasonDiv">
-      <label for="reason">Oh no! Please tell us why you can't come:</label>
-      <textarea name="reason" id="reason" rows="2"></textarea>
-    </div>
-    <input type="hidden" name="yay_field" id="yay_field" value="" />
-    <button type="submit">Submit ✔️</button>
-  </form>
 
-  <div class="popup" id="popupMessage">Thank you for your response! 🌴</div>
+      <div class="form-group">
+        <label for="last_name">Last name</label>
+        <input type="text" id="last_name" name="last_name" required />
+      </div>
+
+      <fieldset class="form-group coming-group">
+        <legend>Are you coming?</legend>
+        <label>
+          <input type="radio" name="coming" value="yes" required />
+          Yes
+        </label>
+        <label>
+          <input type="radio" name="coming" value="no" required />
+          No
+        </label>
+      </fieldset>
+
+      <div class="form-group hidden" id="reasonDiv">
+        <label for="reason">Please provide a reason if you can't come:</label>
+        <textarea id="reason" name="reason" rows="3"></textarea>
+      </div>
+
+      <input type="hidden" name="yay_field" id="yay_field" value="" />
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <section class="map-section">
+      <h3>Hotel Location</h3>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3065.852189503092!2d31.80755131526408!3d36.598249079964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14dca562843a396f%3A0xaed5c3d64feffe4e!2sHaydarpasha%20Palace!5e0!3m2!1sen!2str!4v1690045389407!5m2!1sen!2str"
+        width="100%"
+        height="300"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Haydarpasha Palace Location"
+      ></iframe>
+    </section>
+  </main>
+
+  <div class="popup" id="popupMessage">Thank you for your response!</div>
 
   <footer>
-    <p>
-      Made with ☀️ for the family | <span class="footer-note">Summer 2026</span>
-    </p>
+    <small>&copy; 2026 Family Trip</small>
   </footer>
 
   <script src="https://unpkg.com/@supabase/supabase-js"></script>
