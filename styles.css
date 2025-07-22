@@ -6,24 +6,41 @@
   --light-bg: #fef9f3;
   --text: #333;
   --radius: 12px;
+  --body-bg-gradient: linear-gradient(-45deg, #FFECB3, #FFE082, #FFD54F, #FFCA28);
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
 }
 
 body {
   font-family: 'Mulish', sans-serif;
-  background: linear-gradient(to bottom right, #fff1c1, #ffe3e1);
-  margin: 0;
-  padding: 0;
+  background: var(--body-bg-gradient);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
   color: var(--text);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-.hidden {
-  display: none !important;
+/* Background animation */
+@keyframes gradientShift {
+  0% {background-position:0% 50%;}
+  50% {background-position:100% 50%;}
+  100% {background-position:0% 50%;}
 }
 
 header {
   text-align: center;
   padding: 2rem 1rem 1rem;
-  background: #fffceb;
+  background-color: #fffdf5cc;
+  backdrop-filter: saturate(180%) blur(18px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 header h1 {
@@ -35,14 +52,60 @@ header h1 {
 header .subtitle {
   font-size: 1.2rem;
   color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+/* Info tab styles */
+.info-tab {
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+  text-align: left;
+}
+
+#infoToggle {
+  background: var(--accent);
+  border: none;
+  color: white;
+  font-weight: 700;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+#infoToggle:hover, #infoToggle:focus {
+  background-color: #009bb7;
+  outline: none;
+}
+
+.info-content {
+  background: #fff9dbcc;
+  padding: 1rem 1.3rem;
+  border-radius: var(--radius);
+  margin-top: 0.6rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  font-size: 1rem;
+  color: #444;
+}
+
+.info-content p {
+  margin-top: 0;
+}
+
+.current-date {
+  font-style: italic;
+  margin-top: 0.5rem;
+  color: #777;
 }
 
 .container {
+  flex: 1 0 auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  padding: 2rem;
   gap: 2rem;
+  justify-content: center;
+  padding: 2rem 1rem 2rem;
 }
 
 .form-area, .info-area {
@@ -51,29 +114,35 @@ header .subtitle {
 }
 
 form {
-  background: #fff;
-  padding: 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2rem 2.5rem;
   border-radius: var(--radius);
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
 }
 
 form h2 {
   margin-top: 0;
+  margin-bottom: 1.3rem;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.05em;
 }
 
 label {
   display: block;
-  font-weight: bold;
-  margin-bottom: 0.7rem;
+  margin-bottom: 1.2rem;
+  font-weight: 600;
+  color: var(--primary);
 }
 
 input[type="text"],
 textarea {
   width: 100%;
-  padding: 0.65rem 0.9rem;
+  padding: 0.6rem 0.9rem;
   border-radius: 8px;
   border: 1.5px solid #ccc;
   font-family: inherit;
+  font-weight: 500;
   background: var(--light-bg);
 }
 
@@ -83,14 +152,28 @@ textarea {
 }
 
 .radios {
-  padding: 1rem 0;
+  margin-bottom: 1.4rem;
+}
+
+.radios p {
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+  color: var(--primary);
 }
 
 .radios label {
   display: inline-flex;
   align-items: center;
-  margin-right: 1.2rem;
-  gap: 0.4rem;
+  margin-right: 1.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--text);
+}
+
+input[type="radio"] {
+  margin-right: 0.4rem;
+  accent-color: var(--primary);
+  cursor: pointer;
 }
 
 button {
@@ -99,19 +182,22 @@ button {
   color: white;
   border: none;
   border-radius: var(--radius);
-  padding: 0.9rem;
+  padding: 1rem;
   font-size: 1.1rem;
-  font-weight: bold;
+  font-weight: 700;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.6rem;
-  transition: background-color 0.3s;
+  box-shadow: 0 4px 12px rgba(255,179,71,0.5);
+  transition: background-color 0.3s ease;
 }
 
-button:hover {
+button:hover:not(:disabled),
+button:focus:not(:disabled) {
   background-color: #ffa633;
+  outline: none;
 }
 
 button:disabled {
@@ -123,6 +209,11 @@ button:disabled {
   width: 18px;
   height: 18px;
   animation: spin 1s linear infinite;
+}
+
+.path {
+  stroke: white;
+  stroke-linecap: round;
 }
 
 @keyframes spin {
@@ -142,23 +233,30 @@ button:disabled {
   text-align: center;
   opacity: 0;
   transform: scale(0.85);
-  transition: all 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  user-select: none;
+  pointer-events: none;
 }
 
 .confirmation.show {
   opacity: 1;
   transform: scale(1);
+  pointer-events: auto;
+  display: block;
 }
 
 .card {
-  background: white;
+  background: rgba(255,255,255,0.95);
   padding: 2rem;
   border-radius: var(--radius);
-  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 5px 18px rgba(0,0,0,0.07);
 }
 
 .card h2 {
-  margin: 0 0 0.6rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--accent);
+  font-weight: 700;
 }
 
 .hotel-link {
@@ -166,29 +264,35 @@ button:disabled {
   background: var(--accent);
   color: white;
   padding: 0.5rem 1rem;
-  text-decoration: none;
+  font-weight: 700;
   border-radius: var(--radius);
+  text-decoration: none;
   margin-bottom: 1rem;
-  font-weight: bold;
-  transition: background 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
-.hotel-link:hover {
-  background: #009bb7;
+.hotel-link:hover,
+.hotel-link:focus {
+  background-color: #009bb7;
+  outline: none;
 }
 
 .map-wrapper iframe {
   width: 100%;
+  height: 300px;
   border-radius: var(--radius);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  border: none;
 }
 
 footer {
+  flex-shrink: 0;
   text-align: center;
   padding: 1.5rem;
-  font-size: 0.95rem;
-  background: #fffaf0;
+  font-size: 0.9rem;
   color: #666;
+  background: #fffaf0cc;
+  user-select: none;
 }
 
 /* Responsive */
