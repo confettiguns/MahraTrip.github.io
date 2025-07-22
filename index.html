@@ -2,79 +2,77 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Turkey Trip Signup – Haydarpasha Palace, 2026</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Turkey Trip – Signup</title>
   <link rel="stylesheet" href="styles.css" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 <body>
-  <header class="header">
-    <h1>🌴 Turkey Trip 2026 Signup 🌞</h1>
-    <h2>
-      <a
-        href="https://www.haydarpashapalace.com/en"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="hotel-link animated-link"
-        >Haydarpasha Palace</a
-      >
-    </h2>
-    <p class="lead">Let’s finalize who’s joining this unforgettable summer adventure!</p>
+  <header>
+    <h1>🌞 Turkey Trip 2026</h1>
+    <p class="subtitle">Haydarpasha Palace Signup</p>
   </header>
 
-  <main>
-    <form id="signupForm" autocomplete="off" novalidate>
-      <div class="form-group">
-        <label for="first_name">First Name</label>
-        <input type="text" id="first_name" name="first_name" placeholder="Your first name" required />
-      </div>
+  <main class="container">
+    <section class="form-area">
+      <form id="signupForm" novalidate>
+        <h2>Are you coming? ✈️</h2>
 
-      <div class="form-group">
-        <label for="last_name">Last Name</label>
-        <input type="text" id="last_name" name="last_name" placeholder="Your last name" required />
-      </div>
-
-      <fieldset class="form-group coming-group" aria-describedby="comingHelp">
-        <legend>Are you coming?</legend>
-        <label>
-          <input type="radio" name="coming" value="yes" required />
-          Yes! Can’t wait 🏖️
+        <label>First Name
+          <input type="text" name="first_name" required placeholder="Your first name" />
         </label>
-        <label>
-          <input type="radio" name="coming" value="no" required />
-          No, sadly not 😞
+
+        <label>Last Name
+          <input type="text" name="last_name" required placeholder="Your last name" />
         </label>
-      </fieldset>
-      <small id="comingHelp" class="hint">Please select an option</small>
 
-      <div class="form-group hidden" id="reasonDiv">
-        <label for="reason">Why can’t you come?</label>
-        <textarea id="reason" name="reason" rows="3" placeholder="Let us know..."></textarea>
+        <div class="radios">
+          <p>Are you in?</p>
+          <label>
+            <input type="radio" name="coming" value="yes" required />
+            Yes! 💃
+          </label>
+          <label>
+            <input type="radio" name="coming" value="no" required />
+            No 😔
+          </label>
+        </div>
+
+        <div id="reasonDiv" class="hidden">
+          <label>Why not?
+            <textarea name="reason" placeholder="Type your reason here..."></textarea>
+          </label>
+        </div>
+
+        <input type="hidden" name="yay_field" id="yay_field" value="" />
+
+        <button type="submit">Submit</button>
+        <p class="confirmation" id="popupMessage">🎉 Got it! Thank you! 🎉</p>
+      </form>
+    </section>
+
+    <section class="info-area">
+      <div class="card">
+        <h2>Where We're Staying 🏨</h2>
+        <a
+          href="https://www.haydarpashapalace.com/en"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hotel-link"
+        >🌐 Hotel Website</a>
+
+        <div class="map-wrapper">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.4604341732244!2d31.807550815115633!3d36.59824879518566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14dca562843a396f%3A0xaed5c3d64feffe4e!2sHaydarpasha%20Palace!5e0!3m2!1sen!2str!4v1690045389407!5m2!1sen!2str"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
       </div>
-
-      <input type="hidden" name="yay_field" id="yay_field" value="" />
-
-      <button type="submit" id="submitBtn">Submit</button>
-    </form>
-
-    <section class="map-section">
-      <h3>Hotel Location 📍</h3>
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.4604341732244!2d31.807550815115633!3d36.59824879518566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14dca562843a396f%3A0xaed5c3d64feffe4e!2sHaydarpasha%20Palace!5e0!3m2!1sen!2str!4v1690045389407!5m2!1sen!2str"
-        width="100%"
-        height="320"
-        style="border:0; border-radius: 12px;"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        aria-label="Map showing Haydarpasha Palace location"
-      ></iframe>
     </section>
   </main>
 
-  <div class="popup" id="popupMessage">🎉 Thanks for your response! 🎉</div>
-
   <footer>
-    <small>&copy; 2026 Family Trip</small>
+    <p>☀️ Summer 2026 Family Adventure</p>
   </footer>
 
   <script src="https://unpkg.com/@supabase/supabase-js"></script>
