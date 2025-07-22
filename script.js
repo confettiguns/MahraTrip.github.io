@@ -13,9 +13,38 @@ document.addEventListener('DOMContentLoaded', () => {
   const spinner = submitBtn.querySelector('.spinner');
   const yayField = document.getElementById('yay_field');
 
-  const comingRadios = form.querySelectorAll('input[name="coming"]');
+  // Info box toggle
+  document.getElementById('infoToggle').addEventListener('click', () => {
+    const content = document.getElementById('infoContent');
+    const expanded = content.hasAttribute('hidden') ? false : true;
+    if (expanded) {
+      content.setAttribute('hidden', '');
+      document.getElementById('infoToggle').setAttribute('aria-expanded', 'false');
+    } else {
+      content.removeAttribute('hidden');
+      document.getElementById('infoToggle').setAttribute('aria-expanded', 'true');
+    }
+  });
 
-  function toggleReason() {
+  // Show/hide reason box only if coming is 'no'
+  const comingRadios = form.querySelectorAll('input[name="coming"]');
+  comingRadios.forEach(radio => {
+    radio.addEventListener('change', () => {
+      if (radio.checked && radio.value === 'no') {
+        reasonDiv.classList.remove('hidden');
+        form.reason.required = true;
+        yayField.value = '';
+      } else if (radio.checked && radio.value === 'yes') {
+        reasonDiv.classList.add('hidden');
+        form.reason.value = '';
+        form.reason.required = false;
+        yayField.value = 'Yay.';
+      }
+    });
+  });
+
+  // Set initial reason box state on page load
+  function toggleReasonOnLoad() {
     const selected = form.querySelector('input[name="coming"]:checked');
     if (selected && selected.value === 'no') {
       reasonDiv.classList.remove('hidden');
@@ -28,23 +57,32 @@ document.addEventListener('DOMContentLoaded', () => {
       yayField.value = 'Yay.';
     }
   }
+  toggleReasonOnLoad();
 
-  comingRadios.forEach(radio => {
-    radio.addEventListener('change', toggleReason);
-  });
-
-  toggleReason();
-
+  // Validation helper
   function validateForm() {
-    if (!form.first_name.value.trim()) return alert("Please enter your first name.");
-    if (!form.last_name.value.trim()) return alert("Please enter your last name.");
+    if (!form.first_name.value.trim()) {
+      alert('Please enter your first name');
+      return false;
+    }
+    if (!form.last_name.value.trim()) {
+      alert('Please enter your last name');
+      return false;
+    }
     const selected = form.querySelector('input[name="coming"]:checked');
-    if (!selected) return alert("Please select if you're coming.");
-    if (selected.value === 'no' && !form.reason.value.trim()) return alert("Please tell us why you're not coming.");
+    if (!selected) {
+      alert('Please select whether you are coming');
+      return false;
+    }
+    if (selected.value === 'no' && !form.reason.value.trim()) {
+      alert('Please tell us why you are not coming');
+      return false;
+    }
     return true;
   }
 
-  form.addEventListener('submit', async e => {
+  // Submit event
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     if (!validateForm()) return;
@@ -53,17 +91,17 @@ document.addEventListener('DOMContentLoaded', () => {
     btnText.textContent = 'Hold on...';
     spinner.classList.remove('hidden');
 
-    const data = {
-      first_name: form.first_name.value.trim(),
-      last_name: form.last_name.value.trim(),
-      coming: form.querySelector('input[name="coming"]:checked').value === 'yes',
-      reason: form.coming.value === 'yes' ? 'Yay.' : form.reason.value.trim(),
-    };
+    const first_name = form.first_name.value.trim();
+    const last_name = form.last_name.value.trim();
+    const coming = form.querySelector('input[name="coming"]:checked').value === 'yes';
+    const reason = coming ? 'Yay.' : form.reason.value.trim();
 
-    const { error } = await supabaseClient.from('signups').insert([data]);
+    const { error } = await supabaseClient.from('signups').insert([
+      { first_name, last_name, coming, reason }
+    ]);
 
     if (error) {
-      alert('Error: ' + error.message);
+      alert('Submission error: ' + error.message);
       submitBtn.disabled = false;
       btnText.textContent = 'Submit';
       spinner.classList.add('hidden');
@@ -71,11 +109,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     popup.classList.add('show');
+    spinner.classList.add('hidden');
+    btnText.textContent = 'Submitted ✅';
+
+    // Keep disabled to prevent double submission
+    submitBtn.disabled = true;
+
     form.reset();
     reasonDiv.classList.add('hidden');
-    btnText.textContent = 'Submitted ✅';
-    spinner.classList.add('hidden');
-    submitBtn.disabled = true; // ✅ Prevent double submission
 
     setTimeout(() => {
       popup.classList.remove('show');
