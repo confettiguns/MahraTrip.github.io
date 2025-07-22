@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap");
 
 :root {
   --ocean: #49baff;
@@ -10,9 +10,30 @@
   --text: #155764;
 }
 
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 body {
-  font-family: 'Quicksand', sans-serif;
-  background: linear-gradient(135deg, var(--peach) 0%, var(--sand) 100%);
+  font-family: "Quicksand", sans-serif;
+  background: linear-gradient(
+    270deg,
+    #ff9a9e,
+    #fad0c4,
+    #fbc2eb,
+    #a1c4fd,
+    #c2e9fb
+  );
+  background-size: 1000% 1000%;
+  animation: gradientShift 20s ease infinite;
   min-height: 100vh;
   margin: 0;
   color: var(--text);
@@ -45,6 +66,22 @@ h2 {
   font-size: 1.17em;
   margin-bottom: 2em;
 }
+.hotel-link {
+  text-align: center;
+  margin-top: -0.5em;
+  margin-bottom: 1.8em;
+  font-weight: 600;
+  font-size: 1.05em;
+  color: var(--ocean);
+}
+.hotel-link a {
+  color: var(--accent);
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+.hotel-link a:hover {
+  color: var(--green);
+}
 
 /* --- FORM --- */
 form {
@@ -67,7 +104,8 @@ label {
   margin-bottom: 7px;
 }
 
-input[type="text"], textarea {
+input[type="text"],
+textarea {
   width: 100%;
   padding: 8px;
   border-radius: 8px;
@@ -107,7 +145,8 @@ button[type="submit"] {
   transition: background 0.21s;
 }
 
-button[type="submit"]:hover, button[type="submit"]:focus {
+button[type="submit"]:hover,
+button[type="submit"]:focus {
   background: linear-gradient(90deg, var(--accent), var(--sun));
 }
 
