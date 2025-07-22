@@ -26,33 +26,70 @@ header {
   text-align: center;
   padding: 2rem 1rem 0.5rem;
 }
+
 header h1 {
   font-size: 2rem;
   color: var(--primary);
   margin: 0;
 }
+
 .subtitle {
   font-size: 1.1rem;
   color: var(--accent);
-  margin: 0.2rem 0;
+  margin: 0.2rem 0 1rem;
+}
+
+/* Info tab */
+.info-tab {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+#infoToggle {
+  background-color: var(--accent);
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius);
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#infoToggle:hover, #infoToggle:focus {
+  background-color: #009bb7;
+  outline: none;
+}
+
+.info-content {
+  margin-top: 1rem;
+  padding: 1rem 1.3rem;
+  background: #fffbea;
+  border-radius: var(--radius);
+  box-shadow: 0 5px 15px rgba(0,188,212,0.3);
+  color: #222;
+  font-size: 1rem;
+  line-height: 1.4;
 }
 
 .container {
-  flex: 1;
+  flex-grow: 1;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 2rem 1rem;
+  padding: 0 1rem 2rem;
   gap: 2rem;
   max-width: 1000px;
   margin: 0 auto;
 }
 
 .form-card, .map-card {
-  background: #fff;
+  background: white;
   border-radius: var(--radius);
-  padding: 1.5rem 1.5rem;
-  box-shadow: 0 5px 14px rgba(0,0,0,0.08);
+  padding: 1.5rem;
+  box-shadow: 0 5px 14px rgba(0,0,0,0.12);
+  /* Essential for side by side */
   width: 100%;
   max-width: 420px;
 }
@@ -63,10 +100,11 @@ form h2 {
 }
 
 label, legend {
-  font-weight: bold;
-  margin-top: 1rem;
-  margin-bottom: 0.2rem;
   display: block;
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+  color: var(--primary);
 }
 
 input[type="text"],
@@ -90,16 +128,18 @@ textarea {
 fieldset.radio-group {
   border: none;
   display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  gap: 1.25rem;
+  margin: 1rem 0;
   padding: 0;
 }
+
 .radio-group label {
   font-weight: normal;
   display: flex;
   align-items: center;
   gap: 0.3rem;
+  cursor: pointer;
+  color: #444;
 }
 
 .hidden {
@@ -111,7 +151,7 @@ button {
   background: var(--primary);
   color: white;
   padding: 0.9rem;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 1rem;
   border: none;
   border-radius: var(--radius);
@@ -123,9 +163,11 @@ button {
   margin-top: 1rem;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
+
 button:hover:not(:disabled) {
   background: #e69e2e;
 }
+
 button:disabled {
   background-color: #bbbbbb;
   cursor: default;
@@ -136,12 +178,14 @@ button:disabled {
   height: 18px;
   animation: spin 1s linear infinite;
 }
+
 .path {
   stroke: white;
   stroke-linecap: round;
   stroke-width: 4;
   fill: none;
 }
+
 @keyframes spin {
   100% { transform: rotate(360deg); }
 }
@@ -151,11 +195,12 @@ button:disabled {
   color: white;
   padding: 0.8rem;
   border-radius: var(--radius);
-  font-weight: bold;
+  font-weight: 700;
   text-align: center;
   margin-top: 1rem;
   display: none;
 }
+
 .confirmation.show {
   display: block;
 }
@@ -167,22 +212,34 @@ button:disabled {
 
 .hotel-link {
   display: inline-block;
+  padding: 0.5rem 1rem;
   background-color: var(--accent);
   color: white;
-  padding: 0.5rem 1rem;
   font-weight: 700;
   border-radius: var(--radius);
-  text-decoration: none;
   margin-bottom: 1rem;
+  text-decoration: none;
+  transition: background-color 0.25s ease;
 }
-.hotel-link:hover {
+
+.hotel-link:hover,
+.hotel-link:focus {
   background-color: #009bb7;
+  outline: none;
+}
+
+.map-card iframe {
+  width: 100%;
+  height: 240px;
+  border-radius: var(--radius);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  border: none;
 }
 
 footer {
   text-align: center;
-  padding: 1.5rem;
+  padding: 1.5rem 1rem;
   font-size: 0.9rem;
-  color: #666;
-  background: #fff6dd;
+  color: #555;
+  background-color: #fff7e5;
 }
